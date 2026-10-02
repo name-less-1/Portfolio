@@ -17,14 +17,11 @@ export interface Project {
   repo?: string;
   liveUrl?: string;
   apiUrl?: string;
-  why?: string;
-  architecture?: { flow: string[]; caption: string };
   lessons?: string[];
   features?: string[];
   endpoints?: ApiEndpoint[];
   team?: string;
   roadmap?: string[];
-  dataNote?: string;
 }
 
 export const profile = {
@@ -57,26 +54,11 @@ export const projects: Project[] = [
     summary:
       "A search engine built from scratch over Wikipedia — no Elasticsearch, no Lucene. Development uses the Simple English dump, with the full ~25GB English dump as the eventual scale target.",
     repo: "https://github.com/name-less-1/search-engine",
-    why: "The point is understanding the machinery: why inverted indexes beat naive term-document matrices, why TF-IDF rewards rare terms, and why graph-based authority solves a problem term frequency cannot.",
-    architecture: {
-      flow: [
-        "wikipedia xml",
-        "xml_parser",
-        "wikitext_cleaner",
-        "tokenizer",
-        "inverted_index",
-        "tf-idf / pagerank",
-        "query layer",
-      ],
-      caption: "raw dump → clean text → postings → ranking → search",
-    },
     lessons: [
       "Wikipedia namespaces every dump tag — naive element lookups silently fail until you match the full namespaced string.",
       "Calling .clear() on every iterparse element wipes child data like <title> before you've read it; clear only the outer element you're done with.",
       "Wikitext nests, so regex-only cleanup breaks fast on things like captioned file embeds with links inside links.",
     ],
-    dataNote:
-      "Development on the Simple English dump (~350MB compressed). Full English dump (~25GB) is the target once the pipeline is proven at small scale.",
   },
   {
     slug: "kite",
@@ -204,30 +186,6 @@ export const tickerItems = [
   "PAGE RANK",
   "TF-IDF",
 ] as const;
-
-export interface Note {
-  index: string;
-  tag: string;
-  title: string;
-}
-
-export const notes: Note[] = [
-  {
-    index: "01",
-    tag: "BUILD LOG · SEARCH ENGINE",
-    title: "parsing Wikipedia without loading 350MB into memory",
-  },
-  {
-    index: "02",
-    tag: "SHIP LOG · CITIZENPULSE",
-    title: "two people, seven modules, one Atlas cluster",
-  },
-  {
-    index: "03",
-    tag: "EXPERIMENT LOG · DETECTIVEAI",
-    title: "a suspect played by Groq, interrogated over EJS",
-  },
-];
 
 export const nav = [
   { label: "Index", href: "#top", number: "00" },

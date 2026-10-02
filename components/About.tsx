@@ -4,8 +4,8 @@ import Divider from "./Divider";
 
 export default function About() {
   return (
-    <section id="about" aria-label="About" className="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-24 sm:px-8 sm:py-32">
-      <Eyebrow index="05" label="About — the hand behind the work" />
+    <section id="about" aria-label="About" className="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 sm:py-20">
+      <Eyebrow index="04" label="About — the hand behind the work" />
       <div className="mt-6 grid gap-12 lg:grid-cols-12">
         <h2 className="font-display text-5xl leading-[1.02] text-ivory sm:text-6xl lg:col-span-7">
           {profile.role}
@@ -29,7 +29,7 @@ export default function About() {
       <div className="mt-12">
         <Divider label="Education" />
         <Reveal>
-          <div className="grid gap-6 py-8 sm:grid-cols-2">
+          <div className="grid gap-6 py-6 sm:grid-cols-2">
             <div>
               <p className="font-display text-2xl text-ivory">Lovely Professional University</p>
               <p className="mt-1 text-[15px] text-ivory-dim">B.Tech, Computer Science — {profile.years}</p>

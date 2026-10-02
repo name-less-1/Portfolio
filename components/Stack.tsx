@@ -4,7 +4,7 @@ import { Reveal, Heading, Eyebrow } from "./Reveal";
 export default function Stack() {
   const line = [...tickerItems, ...tickerItems].join("  ·  ");
   return (
-    <section aria-label="Stack" className="relative mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <section aria-label="Stack" className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
       <Eyebrow index="03" label="Instruments — stack" />
       <Heading className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
         <h2 className="font-display text-5xl leading-[1.02] text-ivory sm:text-6xl lg:col-span-7">

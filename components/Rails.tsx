@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const SECTIONS = ["01", "02", "03", "04", "05", "06"];
+const SECTIONS = ["01", "02", "03", "04", "05"];
 
 /**
  * Fixed gutter ornament for wide screens — original arch geometry,

@@ -55,8 +55,8 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" aria-label="Contact" className="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-24 sm:px-8 sm:py-32">
-      <Eyebrow index="06" label="Contact — open doors" />
+    <section id="contact" aria-label="Contact" className="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 sm:py-20">
+      <Eyebrow index="05" label="Contact — open doors" />
       <div className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
         <h2 className="font-display text-5xl leading-[1.02] text-ivory sm:text-6xl lg:col-span-8 lg:text-7xl">
           Say hello
@@ -83,7 +83,7 @@ export default function Contact() {
               target={c.external ? "_blank" : undefined}
               rel={c.external ? "noreferrer" : undefined}
               data-hover
-              className="group grid items-center gap-3 border-b border-ivory/10 py-8 transition-colors hover:bg-ivory/[0.025] sm:grid-cols-12 sm:gap-6 sm:px-4"
+              className="group grid items-center gap-3 border-b border-ivory/10 py-6 transition-colors hover:bg-ivory/[0.025] sm:grid-cols-12 sm:gap-6 sm:px-4"
             >
               <span className="font-display text-2xl italic text-bronze/60 sm:col-span-1">{c.n}</span>
               <span className="sm:col-span-4">
@@ -99,7 +99,7 @@ export default function Contact() {
         ))}
         {/* copy-only phone row — no tel: link per decision */}
         <Reveal delay={0.18}>
-          <div className="grid items-center gap-3 border-b border-ivory/10 py-8 sm:grid-cols-12 sm:gap-6 sm:px-4">
+          <div className="grid items-center gap-3 border-b border-ivory/10 py-6 sm:grid-cols-12 sm:gap-6 sm:px-4">
             <span className="font-display text-2xl italic text-bronze/60 sm:col-span-1">IV</span>
             <span className="sm:col-span-4">
               <span className="block font-mono text-[11px] uppercase tracking-[0.24em] text-ivory-faint">Phone · copy only</span>

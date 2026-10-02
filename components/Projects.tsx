@@ -107,7 +107,7 @@ export default function ProjectEntry({ project }: { project: Project }) {
     <Reveal x={drift} y={56}>
       <article
         aria-labelledby={`proj-${project.index}`}
-        className="group grid gap-8 border-t border-ivory/10 py-12 md:grid-cols-12 md:gap-10 lg:py-16"
+        className="group grid gap-8 border-t border-ivory/10 py-8 md:grid-cols-12 md:gap-10 lg:py-10"
       >
         <div className="md:col-span-3">
           <p className="font-display text-5xl italic text-bronze/50">{project.index}</p>
@@ -171,38 +171,16 @@ export default function ProjectEntry({ project }: { project: Project }) {
           >
             <div className="pt-7">
               {isWiki ? (
-                <div className="space-y-8">
-                  {project.why && (
-                    <p className="max-w-2xl border-l border-crimson/50 pl-5 text-[15.5px] leading-relaxed text-ivory-dim">
-                      {project.why}
-                    </p>
-                  )}
-                  {project.architecture && (
-                    <div className="border border-ivory/10 bg-ink-900/60 p-5 sm:p-6">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-bronze">Pipeline</p>
-                      <p className="mt-3 font-mono text-[12px] leading-loose text-ivory-dim">
-                        {project.architecture.flow.join("  →  ")}
-                      </p>
-                      <p className="mt-2 text-[13px] italic text-ivory-faint">{project.architecture.caption}</p>
-                    </div>
-                  )}
+                <div className="space-y-6">
                   {project.lessons && (
-                    <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-bronze">Lessons</p>
-                      <ul className="mt-3 space-y-3">
-                        {project.lessons.map((l) => (
-                          <li key={l} className="flex gap-3 text-[15px] leading-relaxed text-ivory-dim">
-                            <span aria-hidden="true" className="mt-[9px] h-1 w-1 shrink-0 rotate-45 bg-bronze" />
-                            {l}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {project.dataNote && (
-                    <p className="font-mono text-[11px] leading-relaxed tracking-[0.06em] text-ivory-faint">
-                      NOTE — {project.dataNote}
-                    </p>
+                    <ul className="space-y-3 border-l border-crimson/50 pl-5 text-[15px] leading-relaxed text-ivory-dim">
+                      {project.lessons.map((l) => (
+                        <li key={l} className="flex gap-3">
+                          <span aria-hidden="true" className="mt-[9px] h-1 w-1 shrink-0 rotate-45 bg-bronze" />
+                          {l}
+                        </li>
+                      ))}
+                    </ul>
                   )}
                   <ProjectLinks project={project} />
                 </div>
@@ -235,7 +213,7 @@ export default function ProjectEntry({ project }: { project: Project }) {
 
 export function ProjectsSection({ projects }: { projects: Project[] }) {
   return (
-    <section id="work" aria-label="Selected work" className="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-24 sm:px-8 sm:py-32">
+    <section id="work" aria-label="Selected work" className="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 sm:py-20">
       <Eyebrow index="01" label="Selected work — archive" />
       <Heading className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
         <h2 className="font-display text-5xl leading-[1.02] text-ivory sm:text-6xl lg:col-span-7 lg:text-7xl">
@@ -244,11 +222,10 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
           <span className="italic text-ivory-dim">each a different craft.</span>
         </h2>
         <p className="max-w-md text-[16.5px] leading-relaxed text-ivory-dim lg:col-span-5">
-          The first entry runs deep — pipeline and lessons. The other two stay
-          short, with source and live links when you want them.
+          Each entry opens for detail — summaries up front, specifics inside.
         </p>
       </Heading>
-      <div className="mt-14">
+      <div className="mt-10">
         {projects.map((p) => (
           <ProjectEntry key={p.index} project={p} />
         ))}

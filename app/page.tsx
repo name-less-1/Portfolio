@@ -9,7 +9,6 @@ import { ProjectsSection } from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Rails from "@/components/Rails";
 import Stack from "@/components/Stack";
-import Notes from "@/components/Notes";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -92,10 +91,6 @@ export default function Page() {
           <Divider label="Instruments" />
         </div>
         <Stack />
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <Divider label="Marginalia" />
-        </div>
-        <Notes />
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Divider label="Interlude" />
         </div>

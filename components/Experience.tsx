@@ -3,7 +3,7 @@ import { Reveal, Heading, Eyebrow } from "./Reveal";
 
 export default function Experience() {
   return (
-    <section aria-label="Experience" className="relative mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <section aria-label="Experience" className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
       <Eyebrow index="02" label="Record — experience" />
       <Heading className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
         <h2 className="font-display text-5xl leading-[1.02] text-ivory sm:text-6xl lg:col-span-7">
@@ -18,7 +18,7 @@ export default function Experience() {
       <div className="mt-12 border-t border-ivory/10">
         {experience.map((item, i) => (
           <Reveal key={`${item.role}-${i}`} delay={i * 0.12} x={i % 2 === 0 ? -48 : 48} y={56}>
-            <article className="grid gap-6 border-b border-ivory/10 py-10 md:grid-cols-12">
+            <article className="grid gap-6 border-b border-ivory/10 py-7 md:grid-cols-12">
               <div className="md:col-span-3">
                 <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-bronze">{item.period}</p>
                 <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ivory-ghost">

@@ -18,7 +18,7 @@ export default function Hero({ loaded }: { loaded: boolean }) {
       ref={ref}
       id="top"
       aria-label="Introduction"
-      className="relative mx-auto flex min-h-[96svh] max-w-6xl flex-col justify-end px-5 pb-16 pt-32 sm:px-8 sm:pb-20"
+      className="relative mx-auto flex min-h-[88svh] max-w-6xl flex-col justify-end px-5 pb-12 pt-32 sm:px-8 sm:pb-14"
     >
       <motion.div style={reduce ? undefined : { y: yMeta, opacity }} className="mb-10 flex items-center gap-4">
         <span className="h-px w-12 bg-crimson/70" aria-hidden="true" />
