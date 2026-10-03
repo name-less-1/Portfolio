@@ -14,7 +14,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { projects } from "@/lib/data";
 
-const LOAD_MS = 3400;
+const LOAD_MS = 2200;
 
 export default function Page() {
   const [progress, setProgress] = useState(0);

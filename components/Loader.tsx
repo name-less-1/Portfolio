@@ -168,11 +168,21 @@ export default function Loader({
           className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-bronze/70 to-transparent"
           style={{ opacity: clamp01((p - 0.6) / 0.1) }}
         />
-        <svg viewBox="0 0 300 600" fill="none" className="absolute right-4 top-1/2 h-[86vmin] -translate-y-1/2 text-ivory opacity-[0.07] sm:right-10">
-          <path d="M 250 590 L 250 300 A 200 200 0 0 1 250 60" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M 250 590 L 250 330 A 165 165 0 0 1 250 110" stroke="currentColor" strokeWidth="1" opacity="0.6" />
-          <path d="M 250 590 L 250 360 A 130 130 0 0 1 250 170" stroke="currentColor" strokeWidth="0.75" opacity="0.4" />
-          <line x1="228" y1="590" x2="272" y2="590" stroke="currentColor" strokeWidth="1.5" />
+        <svg viewBox="0 0 100 600" fill="none" className="absolute right-4 top-0 h-full w-24 opacity-90 sm:right-10 sm:w-32">
+          {[
+            { x: 62, y: 84, r: 2.2, c: "#E8DFC9", o: 0.5 },
+            { x: 40, y: 168, r: 1.4, c: "#A68A5B", o: 0.55 },
+            { x: 74, y: 252, r: 1.8, c: "#E8DFC9", o: 0.4 },
+            { x: 52, y: 336, r: 2.6, c: "#A62B33", o: 0.5 },
+            { x: 70, y: 424, r: 1.3, c: "#A68A5B", o: 0.5 },
+            { x: 44, y: 502, r: 1.7, c: "#E8DFC9", o: 0.42 },
+            { x: 64, y: 566, r: 1.2, c: "#A68A5B", o: 0.45 },
+          ].map((d, i) => (
+            <g key={i}>
+              <circle cx={d.x} cy={d.y} r={d.r * 3.2} fill={d.c} opacity={d.o * 0.22} />
+              <circle cx={d.x} cy={d.y} r={d.r} fill={d.c} opacity={d.o} />
+            </g>
+          ))}
         </svg>
       </div>
       <div
@@ -188,11 +198,20 @@ export default function Loader({
           className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-bronze/70 to-transparent"
           style={{ opacity: clamp01((p - 0.6) / 0.1) }}
         />
-        <svg viewBox="0 0 300 600" fill="none" className="absolute left-4 top-1/2 h-[86vmin] -translate-y-1/2 scale-x-[-1] text-ivory opacity-[0.07] sm:left-10">
-          <path d="M 250 590 L 250 300 A 200 200 0 0 1 250 60" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M 250 590 L 250 330 A 165 165 0 0 1 250 110" stroke="currentColor" strokeWidth="1" opacity="0.6" />
-          <path d="M 250 590 L 250 360 A 130 130 0 0 1 250 170" stroke="currentColor" strokeWidth="0.75" opacity="0.4" />
-          <line x1="228" y1="590" x2="272" y2="590" stroke="currentColor" strokeWidth="1.5" />
+        <svg viewBox="0 0 100 600" fill="none" className="absolute left-4 top-0 h-full w-24 opacity-90 sm:left-10 sm:w-32">
+          {[
+            { x: 38, y: 104, r: 1.6, c: "#A68A5B", o: 0.5 },
+            { x: 60, y: 196, r: 2.4, c: "#E8DFC9", o: 0.45 },
+            { x: 30, y: 284, r: 1.3, c: "#E8DFC9", o: 0.4 },
+            { x: 56, y: 372, r: 1.7, c: "#A62B33", o: 0.5 },
+            { x: 36, y: 452, r: 2.2, c: "#A68A5B", o: 0.5 },
+            { x: 62, y: 528, r: 1.4, c: "#E8DFC9", o: 0.42 },
+          ].map((d, i) => (
+            <g key={i}>
+              <circle cx={d.x} cy={d.y} r={d.r * 3.2} fill={d.c} opacity={d.o * 0.22} />
+              <circle cx={d.x} cy={d.y} r={d.r} fill={d.c} opacity={d.o} />
+            </g>
+          ))}
         </svg>
       </div>
 

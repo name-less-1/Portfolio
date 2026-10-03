@@ -4,13 +4,29 @@ import { useEffect, useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 /**
- * Restrained ambient background:
+ * Ambient background — constellation edition:
  * - two drifting fog gradients (CSS) that thin slightly as you scroll
- * - faint architectural arch forms (inline SVG)
- * - lightweight canvas dust particles (~38, capped, DPR-aware)
+ * - two-layer canvas point field: fine dust + candle-points with halos
  * - slow ambient light drift
- * All disabled / static when prefers-reduced-motion.
+ * Canvas sleeps when tab hidden; static dots under prefers-reduced-motion.
  */
+
+const CANDLE_COLORS = ["232,223,201", "166,138,91", "166,43,51"];
+
+// Fixed no-motion fallback dots (deterministic positions, no RNG).
+const STATIC_DOTS = [
+  { x: "12%", y: "22%", r: 1.5, c: "#E8DFC9", o: 0.35 },
+  { x: "24%", y: "68%", r: 1.2, c: "#A68A5B", o: 0.4 },
+  { x: "38%", y: "34%", r: 2, c: "#E8DFC9", o: 0.28 },
+  { x: "55%", y: "58%", r: 1.4, c: "#A62B33", o: 0.35 },
+  { x: "66%", y: "24%", r: 1.1, c: "#A68A5B", o: 0.4 },
+  { x: "76%", y: "72%", r: 1.8, c: "#E8DFC9", o: 0.3 },
+  { x: "86%", y: "42%", r: 1.3, c: "#A68A5B", o: 0.38 },
+  { x: "46%", y: "82%", r: 1.2, c: "#E8DFC9", o: 0.25 },
+  { x: "8%", y: "52%", r: 1, c: "#A68A5B", o: 0.3 },
+  { x: "93%", y: "64%", r: 1.4, c: "#E8DFC9", o: 0.28 },
+];
+
 export default function Background() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduceMotion = useReducedMotion();
@@ -32,10 +48,13 @@ export default function Background() {
     let raf = 0;
     const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     const isMobile = window.innerWidth < 768;
-    const COUNT = isMobile ? 18 : 28;
+    const DUST_COUNT = isMobile ? 16 : 24;
+    const CANDLE_COUNT = isMobile ? 7 : 14;
 
-    type P = { x: number; y: number; r: number; vx: number; vy: number; a: number; tw: number };
-    let parts: P[] = [];
+    type Dust = { x: number; y: number; r: number; vx: number; vy: number; a: number; tw: number };
+    type Candle = { x: number; y: number; r: number; bx: number; by: number; ph: number; a: number; c: string };
+    let dust: Dust[] = [];
+    let candles: Candle[] = [];
 
     const resize = () => {
       w = window.innerWidth;
@@ -48,14 +67,24 @@ export default function Background() {
     };
 
     const seed = () => {
-      parts = Array.from({ length: COUNT }, () => ({
+      dust = Array.from({ length: DUST_COUNT }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        r: 0.6 + Math.random() * 1.6,
+        r: 0.6 + Math.random() * 0.8,
         vx: -0.08 + Math.random() * 0.16,
         vy: -0.06 + Math.random() * 0.1,
-        a: 0.12 + Math.random() * 0.3,
+        a: 0.1 + Math.random() * 0.2,
         tw: Math.random() * Math.PI * 2,
+      }));
+      candles = Array.from({ length: CANDLE_COUNT }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 1.2 + Math.random() * 1.0,
+        bx: Math.random() * w,
+        by: Math.random() * h,
+        ph: Math.random() * Math.PI * 2,
+        a: 0.35 + Math.random() * 0.25,
+        c: CANDLE_COLORS[Math.floor(Math.random() * CANDLE_COLORS.length)],
       }));
     };
 
@@ -66,11 +95,9 @@ export default function Background() {
       seed();
     });
 
-    let t = 0;
     const tick = () => {
-      t += 0.008;
       ctx.clearRect(0, 0, w, h);
-      for (const p of parts) {
+      for (const p of dust) {
         p.x += p.vx;
         p.y += p.vy;
         p.tw += 0.015;
@@ -82,6 +109,24 @@ export default function Background() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(232, 223, 201, ${alpha.toFixed(3)})`;
+        ctx.fill();
+      }
+      // candles: near-static, wander ±6px, breathe gently — no twinkle
+      for (const c of candles) {
+        c.ph += 0.008;
+        const x = c.bx + Math.sin(c.ph) * 6;
+        const y = c.by + Math.cos(c.ph * 0.8) * 6;
+        const breathe = 0.85 + 0.15 * Math.sin(c.ph * 1.7);
+        const alpha = c.a * breathe;
+        // halo
+        ctx.beginPath();
+        ctx.arc(x, y, c.r * 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${c.c}, ${(alpha * 0.18).toFixed(3)})`;
+        ctx.fill();
+        // core
+        ctx.beginPath();
+        ctx.arc(x, y, c.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${c.c}, ${alpha.toFixed(3)})`;
         ctx.fill();
       }
       raf = requestAnimationFrame(tick);
@@ -133,26 +178,16 @@ export default function Background() {
           filter: "blur(34px)",
         }}
       />
-      {/* faint architectural arches */}
-      <svg
-        className="absolute left-1/2 top-1/2 h-[135vmin] w-[135vmin] -translate-x-1/2 -translate-y-1/2 opacity-[0.05]"
-        viewBox="0 0 600 600"
-        fill="none"
-      >
-        {[260, 210, 160, 110].map((r) => (
-          <g key={r}>
-            <path
-              d={`M ${300 - r} 520 L ${300 - r} ${300} A ${r} ${r} 0 0 1 ${300 + r} ${300} L ${300 + r} 520`}
-              stroke="#E8DFC9"
-              strokeWidth="1"
-            />
-            <line x1={300 - r - 14} y1="520" x2={300 + r + 14} y2="520" stroke="#E8DFC9" strokeWidth="1" />
-          </g>
-        ))}
-        <circle cx="300" cy="132" r="2.5" fill="#E8DFC9" />
-      </svg>
-      {/* dust canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0" />
+      {/* constellation point field */}
+      {reduceMotion ? (
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          {STATIC_DOTS.map((d, i) => (
+            <circle key={i} cx={d.x} cy={d.y} r={d.r / 8} fill={d.c} opacity={d.o} />
+          ))}
+        </svg>
+      ) : (
+        <canvas ref={canvasRef} className="absolute inset-0" />
+      )}
       {/* slow light drift */}
       <div
         className="absolute left-1/2 top-[-20%] h-[60vmin] w-[80vmin] -translate-x-1/2 animate-breathe opacity-40"
