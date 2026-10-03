@@ -34,7 +34,7 @@ export default function Hero({ loaded }: { loaded: boolean }) {
           transition={{ duration: 1, delay: 0.1 }}
           className="mb-6 font-display text-xl italic text-ivory-dim sm:text-2xl"
         >
-          The work of {profile.name} — {profile.status}.
+          The work of {profile.name} - {profile.status}.
         </motion.p>
 
         <h1 className="display-shadow font-display text-balance text-[13.5vw] font-medium leading-[0.95] tracking-tight text-ivory sm:text-[9vw] lg:text-[7.2rem]">
@@ -78,7 +78,7 @@ export default function Hero({ loaded }: { loaded: boolean }) {
         aria-hidden="true"
         className="vertical-text absolute right-4 top-1/3 hidden font-mono text-[10px] uppercase tracking-[0.32em] text-ivory-ghost lg:block"
       >
-        Fig. 00 — Threshold
+        Fig. 00 - Threshold
       </p>
     </section>
   );

@@ -56,11 +56,11 @@ export default function Contact() {
 
   return (
     <section id="contact" aria-label="Contact" className="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 sm:py-20">
-      <Eyebrow index="05" label="Contact — open doors" />
+      <Eyebrow index="05" label="Contact - open doors" />
       <div className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
         <h2 className="font-display text-5xl leading-[1.02] text-ivory sm:text-6xl lg:col-span-8 lg:text-7xl">
           Say hello
-          <span className="italic text-ivory-dim"> — plainly.</span>
+          <span className="italic text-ivory-dim"> - plainly.</span>
         </h2>
         <div className="lg:col-span-4">
           <Reveal>
@@ -97,7 +97,7 @@ export default function Contact() {
             </a>
           </Reveal>
         ))}
-        {/* copy-only phone row — no tel: link per decision */}
+        {/* copy-only phone row - no tel: link per decision */}
         <Reveal delay={0.18}>
           <div className="grid items-center gap-3 border-b border-ivory/10 py-6 sm:grid-cols-12 sm:gap-6 sm:px-4">
             <span className="font-display text-2xl italic text-bronze/60 sm:col-span-1">IV</span>
@@ -105,7 +105,7 @@ export default function Contact() {
               <span className="block font-mono text-[11px] uppercase tracking-[0.24em] text-ivory-faint">Phone · copy only</span>
               <span className="mt-1 block font-display text-2xl text-ivory sm:text-[1.7rem]">{profile.phone}</span>
             </span>
-            <span className="text-[15px] text-ivory-faint sm:col-span-5">Available on request — copy the number, no direct dial link.</span>
+            <span className="text-[15px] text-ivory-faint sm:col-span-5">Available on request - copy the number, no direct dial link.</span>
             <span className="sm:col-span-2 sm:text-right">
               <CopyButton text={profile.phone} label="Copy" />
             </span>
@@ -115,7 +115,7 @@ export default function Contact() {
 
       <Reveal className="mt-8">
         <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ivory-ghost">
-          {profile.status} — internships, freelance builds, research collaboration.
+          {profile.status} - internships, freelance builds, research collaboration.
         </p>
       </Reveal>
     </section>

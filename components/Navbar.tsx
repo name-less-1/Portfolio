@@ -28,7 +28,7 @@ export default function Navbar({ loaded }: { loaded: boolean }) {
           scrolled ? "py-3" : "py-5"
         }`}
       >
-        {/* backdrop only after scroll — keeps hero clean */}
+        {/* backdrop only after scroll - keeps hero clean */}
         <div
           aria-hidden="true"
           className={`pointer-events-none absolute inset-0 border-b transition-all duration-500 ${

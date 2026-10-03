@@ -5,7 +5,7 @@ export default function Stack() {
   const line = [...tickerItems, ...tickerItems].join("  ·  ");
   return (
     <section aria-label="Stack" className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-      <Eyebrow index="03" label="Instruments — stack" />
+      <Eyebrow index="03" label="Instruments - stack" />
       <Heading className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
         <h2 className="font-display text-5xl leading-[1.02] text-ivory sm:text-6xl lg:col-span-7">
           Tools kept
@@ -32,7 +32,7 @@ export default function Stack() {
         ))}
       </div>
 
-      {/* restrained ticker — slow, dim, no neon */}
+      {/* restrained ticker - slow, dim, no neon */}
       <div className="relative mt-8 overflow-hidden border-y border-ivory/10 py-3" aria-hidden="true">
         <p className="whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.28em] text-ivory-ghost">
           <span className="inline-block animate-ticker">{line}</span>

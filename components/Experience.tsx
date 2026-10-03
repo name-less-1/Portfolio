@@ -4,7 +4,7 @@ import { Reveal, Heading, Eyebrow } from "./Reveal";
 export default function Experience() {
   return (
     <section aria-label="Experience" className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-      <Eyebrow index="02" label="Record — experience" />
+      <Eyebrow index="02" label="Record - experience" />
       <Heading className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
         <h2 className="font-display text-5xl leading-[1.02] text-ivory sm:text-6xl lg:col-span-7">
           Where the time
@@ -29,7 +29,7 @@ export default function Experience() {
                 <h3 className="font-display text-3xl leading-tight text-ivory">{item.role}</h3>
                 <p className="mt-1 text-[15px] text-ivory-faint">
                   {item.org}
-                  {item.note ? ` — ${item.note}` : ""}
+                  {item.note ? ` - ${item.note}` : ""}
                 </p>
                 <ul className="mt-5 max-w-2xl space-y-3">
                   {item.points.map((pt) => (

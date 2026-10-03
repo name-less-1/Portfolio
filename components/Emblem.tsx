@@ -1,4 +1,4 @@
-// Original typographic emblem — an arch with a monogram cut. No borrowed assets.
+// Original typographic emblem - an arch with a monogram cut. No borrowed assets.
 export default function Emblem({ className = "h-10 w-10" }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">

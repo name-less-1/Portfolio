@@ -28,13 +28,13 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aryan — Full-stack Developer",
+  title: "Aryan - Full-stack Developer",
   description:
     "Personal portfolio of Aryan, full-stack developer working with MERN, applied AI, and search systems.",
   metadataBase: new URL("https://example.com"),
   openGraph: {
-    title: "Aryan — Full-stack Developer",
-    description: "Quiet, reliable software — web platforms, AI interactions, retrieval at scale.",
+    title: "Aryan - Full-stack Developer",
+    description: "Quiet, reliable software - web platforms, AI interactions, retrieval at scale.",
     type: "website",
   },
 };

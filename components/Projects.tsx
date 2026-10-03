@@ -56,6 +56,7 @@ function Visual({ project, expanded }: { project: Project; expanded: boolean }) 
           opacity: reduce ? (expanded ? 0.9 : 0.55) : emberOpacity,
         }}
       />
+      <VisualScene slug={project.slug} expanded={expanded} />
       <span className="absolute bottom-3 right-5 font-display text-6xl italic text-ivory/10 sm:text-7xl">
         {project.index}
       </span>
@@ -67,6 +68,58 @@ function Visual({ project, expanded }: { project: Project; expanded: boolean }) 
       <span className="absolute left-4 top-4 border border-ivory/15 bg-ink-950/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.24em] text-ivory-dim backdrop-blur-sm">
         {project.status}
       </span>
+    </div>
+  );
+}
+
+const SCENES: Record<string, { lines: string[]; tone: string }> = {
+  "wiki-search-engine": {
+    tone: "text-ivory-dim/90",
+    lines: [
+      '> query: "inverted index"',
+      "────────────────────────────────",
+      "[1] postings ............ 0.42",
+      "[2] tf-idf rank ......... 0.38",
+      "[3] pagerank blend ...... 0.31",
+      "────────────────────────────────",
+      "3 results in 0.004s",
+    ],
+  },
+  kite: {
+    tone: "text-ivory-dim/90",
+    lines: [
+      "┌─ schemes ─────┬─ laws ────────┐",
+      "│ scholarships  │ jobs          │",
+      "│ antariksh     │ raksha        │",
+      "│ jan-seva in(3)│ legislative   │",
+      "└───────────────┴───────────────┘",
+    ],
+  },
+  detectiveai: {
+    tone: "text-bronze/90",
+    lines: [
+      "YOU: where were you that night?",
+      "HIM: ...home. alone.",
+      "YOU: the logs say otherwise.",
+      "HIM: ...",
+      "YOU: one more chance.",
+    ],
+  },
+};
+
+function VisualScene({ slug, expanded }: { slug: string; expanded: boolean }) {
+  const scene = SCENES[slug];
+  if (!scene) return null;
+  return (
+    <div className="absolute inset-0 flex items-center justify-center p-6">
+      <pre
+        aria-hidden="true"
+        className={`font-mono text-[10px] leading-[1.9] transition-all duration-700 sm:text-[12px] ${scene.tone} ${
+          expanded ? "opacity-100" : "opacity-70"
+        }`}
+      >
+        {scene.lines.join("\n")}
+      </pre>
     </div>
   );
 }
@@ -134,7 +187,7 @@ export default function ProjectEntry({ project }: { project: Project }) {
             <h3 id={`proj-${project.index}`} className="font-display text-4xl leading-tight text-ivory sm:text-5xl">
               {project.title}
               <span className="ml-4 inline-block align-middle font-mono text-[10px] uppercase tracking-[0.28em] text-bronze">
-                {expanded ? "— Close" : "+ Open"}
+                {expanded ? "- Close" : "+ Open"}
               </span>
             </h3>
             <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.22em] text-ivory-faint">{project.kind}</p>
@@ -214,7 +267,7 @@ export default function ProjectEntry({ project }: { project: Project }) {
 export function ProjectsSection({ projects }: { projects: Project[] }) {
   return (
     <section id="work" aria-label="Selected work" className="relative mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 sm:py-20">
-      <Eyebrow index="01" label="Selected work — archive" />
+      <Eyebrow index="01" label="Selected work - archive" />
       <Heading className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">
         <h2 className="font-display text-5xl leading-[1.02] text-ivory sm:text-6xl lg:col-span-7 lg:text-7xl">
           Three entries,
@@ -222,7 +275,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
           <span className="italic text-ivory-dim">each a different craft.</span>
         </h2>
         <p className="max-w-md text-[16.5px] leading-relaxed text-ivory-dim lg:col-span-5">
-          Each entry opens for detail — summaries up front, specifics inside.
+          Each entry opens for detail - summaries up front, specifics inside.
         </p>
       </Heading>
       <div className="mt-10">

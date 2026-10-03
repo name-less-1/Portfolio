@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Emblem from "./Emblem";
 
 /**
- * "THE GATE" at full power — full-viewport spectacle:
+ * "THE GATE" at full power - full-viewport spectacle:
  * rising ember field, triple counter-rotating seal rings,
  * flickering giant word, god-ray seam, HUD telemetry,
  * boot-log stream, lock jolt. No loading bar. progress drives all.
@@ -26,7 +26,7 @@ const LOGS = [
 
 const SERIF = "The archive opens.";
 
-/** Rising ember particles — lives only while the intro is on screen. */
+/** Rising ember particles - lives only while the intro is on screen. */
 function Embers({ active }: { active: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -119,7 +119,7 @@ export default function Loader({
   const part = clamp01((p - 0.66) / 0.34);
   const easedPart = part * part * (3 - 2 * part);
 
-  // lock jolt — one physical punch as the seal lands
+  // lock jolt - one physical punch as the seal lands
   const jolt =
     p > 0.6 && p < 0.72 ? Math.sin(((p - 0.6) / 0.12) * Math.PI) * 0.009 : 0;
 

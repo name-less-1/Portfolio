@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex items-center gap-3 text-ivory-dim">
           <Emblem className="h-7 w-7 text-bronze/70" />
           <p className="font-mono text-[11px] uppercase tracking-[0.24em]">
-            Aryan — Set in Cormorant & Inter
+            Aryan - Set in Cormorant & Inter
           </p>
         </div>
         <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ivory-ghost">

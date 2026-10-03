@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const SECTIONS = ["01", "02", "03", "04", "05"];
 
 /**
- * Fixed gutter ornament for wide screens — original arch geometry,
+ * Fixed gutter ornament for wide screens - original arch geometry,
  * hairline rules, vertical volume mark + section numerals.
  * Atmosphere-inspired, nothing borrowed. Hidden below xl.
  */
@@ -54,7 +54,7 @@ export default function Rails({ visible }: { visible: boolean }) {
           </span>
         </div>
 
-        {/* right rail — section numerals */}
+        {/* right rail - section numerals */}
         <div className="absolute right-[max(1.25rem,calc(50%-46rem))] top-1/2 flex -translate-y-1/2 flex-col items-center gap-3">
           <span className="h-24 w-px bg-gradient-to-b from-transparent to-ivory/15" />
           {SECTIONS.map((n, i) => (
