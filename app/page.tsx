@@ -14,7 +14,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { projects } from "@/lib/data";
 
-const LOAD_MS = 2200;
+const LOAD_MS = 1500;
 
 export default function Page() {
   const [progress, setProgress] = useState(0);
@@ -26,9 +26,9 @@ export default function Page() {
     if (doneRef.current) return;
     doneRef.current = true;
     setProgress(100);
-    // hold at 100% briefly, then slow fog-dissolve
-    setTimeout(() => setLoading(false), 200);
-    setTimeout(() => setLoaded(true), 1000);
+    // short hold, then dissolve into the hero
+    setTimeout(() => setLoading(false), 150);
+    setTimeout(() => setLoaded(true), 650);
   }, []);
 
   useEffect(() => {
